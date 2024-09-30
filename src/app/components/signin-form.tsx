@@ -74,7 +74,9 @@ export const SigninForm = (props: CredentialsFormProps) => {
           message: result.error
         })
       }
-      if()
+      if (result.success) {
+        // afiseaza mesajul de succes
+      }
     })
   }
 
