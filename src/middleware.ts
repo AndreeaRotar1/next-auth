@@ -24,8 +24,6 @@ export default auth((req) => {
   if (!isLoggedIn && isPrivateRoute) {
     return Response.redirect(new URL('/auth/signin', nextUrl))
   }
-
-  return
 })
 
 export const config = {
