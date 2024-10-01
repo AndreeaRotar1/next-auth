@@ -2,7 +2,7 @@
 
 import { zodResolver } from '@hookform/resolvers/zod'
 // import { redirect } from 'next/navigation'
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import clsx from 'clsx'
 import { type z } from 'zod'
@@ -37,10 +37,13 @@ const FIELD_LABEL = {
 type FormType = z.infer<typeof RegisterSchema>
 
 export const RegisterForm = (props: CredentialsFormProps) => {
+  const [success, setSuccess] = useState('')
+
   const {
     handleSubmit,
     register,
     setError,
+    reset,
     formState: { errors }
   } = useForm<FormType>({
     resolver: zodResolver(RegisterSchema),
@@ -63,7 +66,8 @@ export const RegisterForm = (props: CredentialsFormProps) => {
           })
         }
       } else {
-        console.log('email sent')
+        setSuccess('Verification email sent!')
+        reset()
       }
     } catch (error) {
       console.error('An error occurred during registration:', error)
@@ -124,6 +128,8 @@ export const RegisterForm = (props: CredentialsFormProps) => {
             )
           })}
         </div>
+
+        {success && <p>{success}</p>}
 
         <div className="mt-5 flex flex-col-reverse items-start justify-between gap-5 md:mt-6 md:flex-row lg:mt-7">
           <button>Register</button>

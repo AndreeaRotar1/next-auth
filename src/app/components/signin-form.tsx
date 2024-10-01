@@ -2,7 +2,7 @@
 
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { clsx } from 'clsx'
 import { useSearchParams } from 'next/navigation'
@@ -47,6 +47,7 @@ const FIELD_LABEL = {
 type FormType = z.infer<typeof schema>
 
 export const SigninForm = (props: CredentialsFormProps) => {
+  const [success, setSuccess] = useState('')
   const searchParams = useSearchParams()
   const urlError =
     searchParams.get('error') === 'OAuthAccountNotLinked'
@@ -75,7 +76,7 @@ export const SigninForm = (props: CredentialsFormProps) => {
         })
       }
       if (result.success) {
-        // afiseaza mesajul de succes
+        setSuccess(result.success)
       }
     })
   }
