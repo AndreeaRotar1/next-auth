@@ -1,4 +1,5 @@
 import { DEFAULT_LOGIN_REDIRECT } from '@/routes'
+
 import { signIn } from '../../auth'
 
 export default function GoogleProvider() {
