@@ -132,6 +132,7 @@ export const SigninForm = (props: CredentialsFormProps) => {
         <div className="mt-5 flex flex-col-reverse items-start justify-between gap-5 md:mt-6 md:flex-row lg:mt-7">
           {urlError && <p>{urlError}</p>}
           {errors && <p>{errors.root?.message}</p>}
+          {success && <p>{success}</p>}
 
           <button>Sign in</button>
         </div>
