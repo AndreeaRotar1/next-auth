@@ -80,7 +80,7 @@
     "@types/react-dom": "18.2.18",
     "@types/react-world-flags": "^1.4.5",
     "@types/uuid": "^10.0.0",
-    "autoprefixer": "10.4.17",
+    "autoprefixer": "^10.4.20",
     "eslint": "8.56.0",
     "eslint-config-love": "^47.0.0",
     "eslint-config-next": "14.1.0",
@@ -92,12 +92,12 @@
     "eslint-plugin-react": "7.33.2",
     "eslint-plugin-storybook": "0.8.0",
     "husky": "^8.0.0",
-    "postcss": "8",
+    "postcss": "^8.4.47",
     "prettier": "3.2.5",
     "prettier-plugin-tailwindcss": "0.5.11",
     "prisma": "^5.19.1",
     "storybook": "8.0.10",
-    "tailwindcss": "^3.4.1",
+    "tailwindcss": "^3.4.13",
     "tailwindcss-bg-patterns": "^0.3.0",
     "typescript": "5.3.3"
   }

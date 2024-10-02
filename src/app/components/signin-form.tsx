@@ -99,14 +99,14 @@ export const SigninForm = (props: CredentialsFormProps) => {
   ]
 
   return (
-    <div className="m-auto">
+    <div>
       <form onSubmit={handleSubmit(submitHandler)} className="w-full">
         <div className="flex flex-col flex-wrap justify-between text-14px font-500 leading-16px md:flex-row lg:leading-20px">
           {fieldInputs.map((fieldInput: InputField) => {
             return (
               <React.Fragment key={fieldInput.name}>
                 {fieldInput.type === 'input' && (
-                  <div>
+                  <div className="w-full flex flex-col">
                     <label htmlFor={fieldInput.name}>{fieldInput.label}</label>
 
                     <input
@@ -114,8 +114,8 @@ export const SigninForm = (props: CredentialsFormProps) => {
                       placeholder={fieldInput.placeholder}
                       type="text"
                       {...register(fieldInput.name)}
-                      className={clsx('p-3 text-14px leading-16px lg:leading-20px', {
-                        'border-error-500': errors[fieldInput.name]
+                      className={clsx('p-3 text-14px leading-16px lg:leading-20px border', {
+                        'border-red-500': errors[fieldInput.name]
                       })}
                     />
 
@@ -129,12 +129,12 @@ export const SigninForm = (props: CredentialsFormProps) => {
           })}
         </div>
 
-        <div className="mt-5 flex flex-col-reverse items-start justify-between gap-5 md:mt-6 md:flex-row lg:mt-7">
+        <div className="mt-5 flex flex-col gap-5 md:mt-6 lg:mt-7 items-start">
           {urlError && <p>{urlError}</p>}
           {errors && <p>{errors.root?.message}</p>}
           {success && <p>{success}</p>}
 
-          <button>Sign in</button>
+          <button className="border p-3">Sign in</button>
         </div>
       </form>
     </div>

@@ -9,7 +9,9 @@ export default function GoogleProvider() {
         'use server'
         await signIn('google', { redirectTo: DEFAULT_LOGIN_REDIRECT })
       }}>
-      <button type="submit">Signin with Google</button>
+      <button className="border p-1" type="submit">
+        Signin with Google
+      </button>
     </form>
   )
 }
