@@ -9,7 +9,9 @@ export default function GithubProvider() {
         'use server'
         await signIn('github', { redirectTo: DEFAULT_LOGIN_REDIRECT })
       }}>
-      <button type="submit">Signin with GitHub</button>
+      <button className="border p-1" type="submit">
+        Signin with GitHub
+      </button>
     </form>
   )
 }

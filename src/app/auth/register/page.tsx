@@ -11,11 +11,13 @@ export default async function Register() {
   if (session) return redirect('/dashboard')
 
   return (
-    <div className="flex">
-      <h1>Register</h1>
+    <div className="flex flex-col w-1/2 mx-auto">
+      <h1 className="text-2xl">Register</h1>
 
-      <GoogleProvider />
-      <GithubProvider />
+      <div className="flex">
+        <GoogleProvider />
+        <GithubProvider />
+      </div>
 
       <span className="text-2xl font-semibold text-white text-center mt-8">Or</span>
       <RegisterForm />

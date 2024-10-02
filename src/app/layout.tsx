@@ -21,7 +21,6 @@ export default function RootLayout({
       <body className={inter.className}>
         <div id="content">
           <AuthProvider>{children}</AuthProvider>
-          <div className="bg-primary-500">hi</div>
         </div>
       </body>
     </html>
