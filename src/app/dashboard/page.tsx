@@ -1,18 +1,12 @@
-import { auth, signOut } from '@/auth'
+import { auth } from '@/auth'
 
 const Page = async () => {
   const session = await auth()
   return (
-    <>
+    <div className="space-y-6">
+      <h1 className="text-2xl">Dashboard</h1>
       <p>Logged in as {session?.user?.email}</p>
-      <form
-        action={async () => {
-          'use server'
-          await signOut()
-        }}>
-        <button type="submit">Sign out</button>
-      </form>
-    </>
+    </div>
   )
 }
 export default Page

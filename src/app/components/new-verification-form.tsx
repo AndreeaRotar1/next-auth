@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
+import Link from 'next/link'
 
 import { SIGNIN_ROUTE } from '../constants/login-constants'
 import { newVerification } from '../actions/new-verification'
@@ -37,12 +38,14 @@ const NewVerificationForm = () => {
   }, [onSubmit])
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col space-y-3 items-start">
       <span>Confirming your verification</span>
       {!success && !error && <div>loading..</div>}
       {!success && <span>{error && error}</span>}
-      <span>{success && success}</span>
-      <a href={SIGNIN_ROUTE}>Back to login</a>
+      <span className="text-green-700">{success && success}</span>
+      <Link href={SIGNIN_ROUTE} className="border p-2">
+        Back to login
+      </Link>
     </div>
   )
 }

@@ -1,13 +1,14 @@
 'use client'
 
-import { z } from 'zod'
+import { type z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import React, { useState } from 'react'
+import React from 'react'
 import { useForm } from 'react-hook-form'
 import { clsx } from 'clsx'
 import { useSearchParams } from 'next/navigation'
 
 import { login } from '../actions/login'
+import { SignInSchema } from '../schemas'
 
 type CredentialsFormProps = {
   csrfToken?: string
@@ -21,19 +22,6 @@ export type InputField = {
   placeholder?: string
 }
 
-const schema = z.object({
-  email: z
-    .string()
-    .min(1, 'Email is required.')
-    .email({ message: 'Please enter a valid email address (e.g., example@domain.com)' }),
-  password: z
-    .string()
-    .trim()
-    .min(1, 'Password is required.')
-    .max(50, 'Name cannot exceed 50 characters.')
-    .min(2, { message: 'Name must be at least 2 characters long.' })
-})
-
 const FIELD_NAME = {
   EMAIL: 'email',
   PASSWORD: 'password'
@@ -44,10 +32,9 @@ const FIELD_LABEL = {
   PASSWORD: 'Password'
 } as const
 
-type FormType = z.infer<typeof schema>
+type FormType = z.infer<typeof SignInSchema>
 
 export const SigninForm = (props: CredentialsFormProps) => {
-  const [success, setSuccess] = useState('')
   const searchParams = useSearchParams()
   const urlError =
     searchParams.get('error') === 'OAuthAccountNotLinked'
@@ -60,7 +47,7 @@ export const SigninForm = (props: CredentialsFormProps) => {
     setError,
     formState: { errors }
   } = useForm<FormType>({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(SignInSchema),
     defaultValues: {
       email: '',
       password: ''
@@ -74,9 +61,6 @@ export const SigninForm = (props: CredentialsFormProps) => {
           type: 'value',
           message: result.error
         })
-      }
-      if (result.success) {
-        setSuccess(result.success)
       }
     })
   }
@@ -132,7 +116,6 @@ export const SigninForm = (props: CredentialsFormProps) => {
         <div className="mt-5 flex flex-col gap-5 md:mt-6 lg:mt-7 items-start">
           {urlError && <p>{urlError}</p>}
           {errors && <p>{errors.root?.message}</p>}
-          {success && <p>{success}</p>}
 
           <button className="border p-3">Sign in</button>
         </div>

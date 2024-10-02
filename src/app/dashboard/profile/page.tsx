@@ -7,8 +7,9 @@ const page = async () => {
 
   return (
     <>
-      <div>profile</div>
-      <div>{JSON.stringify(session)}</div>
+      <h1 className="text-2xl mb-3">Profile</h1>
+      <p>User name: {session?.user?.name}</p>
+      <p>User email: {session?.user?.email}</p>
     </>
   )
 }
