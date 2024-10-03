@@ -1,9 +1,9 @@
 import { redirect } from 'next/navigation'
 
-import { RegisterForm } from '../../components/register-form'
-import { auth } from '../../../auth'
-import GoogleProvider from '../../components/google-provider'
-import GithubProvider from '../../components/github-provider'
+import { RegisterForm } from '../../../components/register-form'
+import { auth } from '../../../../auth'
+import GoogleProvider from '../../../components/google-provider'
+import GithubProvider from '../../../components/github-provider'
 
 export default async function Register() {
   const session = await auth()

@@ -1,8 +1,8 @@
 import { Suspense } from 'react'
 
-import GithubProvider from '../../components/github-provider'
-import GoogleProvider from '../../components/google-provider'
-import { SigninForm } from '../../components/signin-form'
+import GithubProvider from '../../../components/github-provider'
+import GoogleProvider from '../../../components/google-provider'
+import { SigninForm } from '../../../components/signin-form'
 
 export default async function SignIn() {
   return (
